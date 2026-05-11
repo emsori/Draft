@@ -1,384 +1,1218 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Melda ❤️</title>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-
-    <style>
-
-        body,html{
-            margin:0;
-            padding:0;
-            width:100%;
-            height:100%;
-            font-family:'Poppins',sans-serif;
-        }
-
-/* LOGIN */
-#login-stage,#confirm-stage{
-    position:fixed;
-    inset:0;
-    background:black;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    z-index:100;
-    color:white;
-}
-
-#confirm-stage{
-    display:none;
-}
-
-.card{
-    text-align:center;
-    width:260px;
-}
-
-input{
-    width:100%;
-    padding:12px;
-    margin-bottom:10px;
-    border-radius:8px;
-    border:none;
-    text-align:center;
-}
-
-button{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:8px;
-    background:#ff2d55;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-/* MAIN */
-#main-stage{
-    display:none;
-    position:absolute;
-    inset:0;
-    background:white;
-}
-
-/* LAYOUT */
-.main-container{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    height:100%;
-    padding:40px;
-    box-sizing:border-box;
-}
-
-/* BOX ROMANTIS */
-.love-box{
-    width:45%;
-    background:#ffb6c1;
-    padding:40px;
-    border-radius:20px;
-    position:relative;
-    box-shadow:0 10px 30px rgba(0,0,0,0.15);
-}
-
-.emoji{
-    position:absolute;
-    top:10px;
-    right:20px;
-    font-size:28px;
-}
-
-.love-title{
-    font-family:'Great Vibes',cursive;
-    font-size:48px;
-    color:#d10050;
-    margin-bottom:20px;
-}
-
-.love-text{
-    font-size:18px;
-    line-height:1.7;
-    color:#5a0030;
-}
-
-/* PLAYER */
-.music-player{
-    position:relative;
-    width:420px;
-    height:260px;
-}
-
-/* COVER BESAR */
-.cover{
-    position:absolute;
-    width:260px;
-    right:0;
-    z-index:3;
-    border-radius:6px;
-    box-shadow:0 12px 35px rgba(0,0,0,0.4);
-}
-
-/* VINYL */
-.vinyl{
-    position:absolute;
-    width:240px;
-    height:240px;
-    right:160px;
-    top:5px;
-    border-radius:50%;
-    z-index:1;
-
-    background:
-    radial-gradient(circle at center,
-        #000 60px,
-        #111 70px,
-        #000 100px,
-        #111 120px,
-        #000 150px);
-
-    box-shadow:
-    inset 0 0 12px rgba(255,255,255,0.1),
-    0 0 25px rgba(0,0,0,0.4);
-
-    animation:spin 4s linear infinite;
-    animation-play-state:paused;
-}
-
-/* COVER DI TENGAH VINYL */
-.vinyl-label{
-    position:absolute;
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    object-fit:cover;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    box-shadow:0 0 8px rgba(0,0,0,0.4);
-}
-
-/* ROTATE */
-@keyframes spin{
-    from{transform:rotate(0deg);}
-    to{transform:rotate(360deg);}
-}
-
-/* TEXT */
-#dramatic-text{
-    position:absolute;
-    bottom:40px;
-    width:100%;
-    text-align:center;
-    font-size:28px;
-    letter-spacing:2px;
-    opacity:0;
-    color:#ff2d55;
-}
-
-/* HEART */
-.heart{
-    position:absolute;
-    bottom:-50px;
-    font-size:22px;
-    color:#ff2d55;
-}
-
-/* RESPONSIVE */
-@media (max-width:768px){
-
-    .main-container{
-        flex-direction:column;
-        gap:40px;
-        padding:20px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mevitra Pride Roleplay — Command List</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --orange:       #FF6B00;
+      --orange-light: #FF8C38;
+      --orange-dark:  #CC5500;
+      --orange-glow:  rgba(255, 107, 0, 0.25);
+      --orange-faint: rgba(255, 107, 0, 0.08);
+      --bg:           #0D0D0D;
+      --bg2:          #141414;
+      --bg3:          #1C1C1C;
+      --bg4:          #242424;
+      --border:       rgba(255, 107, 0, 0.18);
+      --border-dim:   rgba(255,255,255,0.06);
+      --text:         #F0F0F0;
+      --text-muted:   #888;
+      --text-dim:     #555;
+      --radius:       12px;
+      --radius-sm:    8px;
     }
 
-    .love-box{
-        width:90%;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    .music-player{
-        width:300px;
-        height:200px;
+    /* ─── PARTICLES ─── */
+    #particles {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--orange);
+      opacity: 0;
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { opacity: 0.15; }
+      90%  { opacity: 0.08; }
+      100% { transform: translateY(-20vh) scale(1); opacity: 0; }
     }
 
-    .vinyl{
-        width:180px;
-        height:180px;
-        right:120px;
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 80px 24px 60px;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(255,107,0,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--orange-faint);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 18px;
+      font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
+      color: var(--orange-light);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeSlideDown 0.6s ease 0.2s forwards;
+    }
+    .hero-badge::before { content: '●'; color: var(--orange); animation: pulse 2s ease infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .hero h1 {
+      font-size: clamp(36px, 7vw, 72px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      opacity: 0;
+      animation: fadeSlideDown 0.7s ease 0.35s forwards;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--orange) 0%, #FFB347 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      margin-top: 16px;
+      color: var(--text-muted);
+      font-size: 16px; font-weight: 400;
+      opacity: 0;
+      animation: fadeSlideDown 0.7s ease 0.5s forwards;
     }
 
-    .cover{
-        width:200px;
+    /* stats bar */
+    .hero-stats {
+      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+      margin-top: 40px;
+      opacity: 0;
+      animation: fadeSlideDown 0.7s ease 0.65s forwards;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 28px; font-weight: 800; color: var(--orange-light); }
+    .stat-lbl { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+    /* ─── SEARCH BAR ─── */
+    .search-wrap {
+      position: relative; z-index: 1;
+      max-width: 560px; margin: 0 auto 48px;
+      padding: 0 24px;
+      opacity: 0;
+      animation: fadeSlideDown 0.7s ease 0.75s forwards;
+    }
+    .search-wrap input {
+      width: 100%;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 14px 24px 14px 52px;
+      color: var(--text);
+      font-size: 15px; font-family: inherit;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .search-wrap input::placeholder { color: var(--text-dim); }
+    .search-wrap input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px var(--orange-glow);
+    }
+    .search-icon {
+      position: absolute; left: 40px; top: 50%; transform: translateY(-50%);
+      color: var(--text-dim); font-size: 18px; pointer-events: none;
     }
 
-    .vinyl-label{
-        width:60px;
-        height:60px;
+    /* ─── MAIN LAYOUT ─── */
+    .container {
+      max-width: 1240px; margin: 0 auto;
+      padding: 0 24px 80px;
+      position: relative; z-index: 1;
     }
 
-}
+    /* ─── SECTION TITLE ─── */
+    .section-title {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--text-dim);
+      margin-bottom: 16px; margin-top: 48px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(to right, var(--border-dim), transparent);
+    }
 
-</style>
+    /* ─── CATEGORY GRID ─── */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 16px;
+    }
+
+    /* ─── CATEGORY CARD ─── */
+    .cat-card {
+      background: var(--bg2);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .cat-card.visible {
+      animation: cardIn 0.5s ease forwards;
+    }
+    @keyframes cardIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .cat-card:hover {
+      border-color: var(--border);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px var(--border);
+    }
+
+    .cat-header {
+      padding: 16px 20px 14px;
+      display: flex; align-items: center; gap: 12px;
+      border-bottom: 1px solid var(--border-dim);
+      background: var(--bg3);
+      cursor: pointer;
+      user-select: none;
+    }
+    .cat-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      background: var(--orange-faint);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .cat-name { font-size: 14px; font-weight: 700; flex: 1; }
+    .cat-count {
+      font-size: 11px; font-weight: 600;
+      background: var(--orange-faint); color: var(--orange-light);
+      border: 1px solid var(--border);
+      border-radius: 999px; padding: 2px 10px;
+    }
+    .cat-toggle {
+      color: var(--text-dim); font-size: 12px;
+      transition: transform 0.3s;
+    }
+    .cat-card.collapsed .cat-toggle { transform: rotate(-90deg); }
+
+    .cmd-list {
+      padding: 12px 20px 16px;
+      display: flex; flex-direction: column; gap: 4px;
+      max-height: 999px;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+    }
+    .cat-card.collapsed .cmd-list { max-height: 0; padding-top: 0; padding-bottom: 0; }
+
+    .cmd-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 7px 10px;
+      border-radius: var(--radius-sm);
+      transition: background 0.2s;
+    }
+    .cmd-item:hover { background: var(--bg4); }
+    .cmd-item.hidden { display: none; }
+
+    .cmd-name {
+      font-family: 'Courier New', monospace;
+      font-size: 13px; font-weight: 700;
+      color: var(--orange-light);
+      background: var(--orange-faint);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 2px 9px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .cmd-desc {
+      font-size: 12px; color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* ─── ADMIN GATE ─── */
+    .admin-gate {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: cardIn 0.5s ease 0.2s forwards;
+    }
+    .admin-gate::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center top, rgba(255,107,0,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .gate-icon { font-size: 48px; margin-bottom: 16px; display: block; }
+    .gate-title { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+    .gate-sub { color: var(--text-muted); font-size: 14px; margin-bottom: 28px; max-width: 400px; margin-left: auto; margin-right: auto; }
+
+    .gate-input-wrap {
+      display: flex; gap: 10px; max-width: 420px; margin: 0 auto;
+    }
+    .gate-input {
+      flex: 1;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      color: var(--text);
+      font-size: 14px; font-family: 'Courier New', monospace;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .gate-input::placeholder { color: var(--text-dim); font-family: 'Inter', sans-serif; }
+    .gate-input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px var(--orange-glow);
+    }
+    .gate-btn {
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+      border: none; border-radius: var(--radius-sm);
+      padding: 12px 24px;
+      color: #fff; font-size: 14px; font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .gate-btn:hover { opacity: 0.88; transform: scale(1.02); }
+    .gate-btn:active { transform: scale(0.98); }
+    .gate-error {
+      margin-top: 12px; font-size: 13px;
+      color: #ff4444; display: none;
+    }
+    .gate-hint {
+      margin-top: 20px; font-size: 12px; color: var(--text-dim);
+    }
+    .gate-hint code {
+      background: var(--bg4); padding: 2px 6px; border-radius: 4px;
+      font-family: 'Courier New', monospace; color: var(--text-muted);
+    }
+
+    /* admin unlocked section */
+    #admin-content { display: none; }
+    #admin-content.unlocked { display: block; }
+
+    .unlocked-banner {
+      display: flex; align-items: center; gap: 14px;
+      background: linear-gradient(135deg, rgba(255,107,0,0.15), rgba(255,107,0,0.05));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeSlideDown 0.5s ease forwards;
+    }
+    .unlocked-banner .icon { font-size: 24px; }
+    .unlocked-banner .msg { font-size: 14px; color: var(--orange-light); font-weight: 600; }
+    .unlocked-banner .sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ─── BOOMBOX NOTE ─── */
+    .info-box {
+      background: var(--orange-faint);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .info-box .icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .info-box .body { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .info-box .body b { color: var(--text); font-weight: 600; }
+    .info-box .body code {
+      background: var(--bg4); padding: 1px 6px;
+      border-radius: 4px; font-family: 'Courier New', monospace;
+      color: var(--orange-light); font-size: 12px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border-dim);
+      position: relative; z-index: 1;
+    }
+    footer p { font-size: 13px; color: var(--text-dim); }
+    footer span { color: var(--orange); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      .cat-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 36px; letter-spacing: -1px; }
+      .gate-input-wrap { flex-direction: column; }
+      .hero-stats { gap: 24px; }
+    }
+
+    /* search highlight */
+    .cmd-item.no-match { display: none; }
+    .cat-card.all-hidden { opacity: 0.35; pointer-events: none; }
+  </style>
 </head>
-
 <body>
 
-    <audio id="song" src="musicmel/lagu.mp3" loop></audio>
+<!-- Floating particles -->
+<div id="particles"></div>
 
-<!-- LOGIN -->
-<div id="login-stage">
-    <div class="card">
-        <h2>Unlock Heart</h2>
-        <input type="password" id="passInput" placeholder="Password">
-        <button onclick="checkPass()">Buka</button>
+<!-- ═══════════════ HERO ═══════════════ -->
+<header class="hero">
+  <div class="hero-badge">Mevitra Pride Roleplay &mdash; v2</div>
+  <h1>Command <span>Reference</span></h1>
+  <p class="hero-sub">Daftar lengkap semua command in-game &mdash; Player, Faction &amp; Admin</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num" id="stat-total">0</div><div class="stat-lbl">Total CMD</div></div>
+    <div class="stat"><div class="stat-num">9</div><div class="stat-lbl">Kategori</div></div>
+    <div class="stat"><div class="stat-num">SA-MP</div><div class="stat-lbl">Platform</div></div>
+  </div>
+</header>
+
+<!-- ═══════════════ SEARCH ═══════════════ -->
+<div class="search-wrap">
+  <span class="search-icon">🔍</span>
+  <input type="text" id="search" placeholder="Cari command... (contoh: /stats, /jail, /bisnis)" autocomplete="off" spellcheck="false" />
+</div>
+
+<!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+<div class="container">
+
+  <!-- ── BOOMBOX TIP ── -->
+  <div class="info-box" id="boombox-tip">
+    <div class="icon">🔊</div>
+    <div class="body">
+      <b>Tips Boombox:</b> Buat dapetin item Boombox, minta admin pake <code>/asetitem 1 Boombox</code>. Setelah dipasang lewat inventory, buka HP → Other → Boombox → Putar Musik. Masukkan <b>direct link MP3</b> (bukan YouTube!). Rekomendasi: upload lagu ke <b>archive.org</b> lalu copy link-nya.
     </div>
-</div>
+  </div>
 
-<!-- CONFIRM -->
-<div id="confirm-stage">
-    <div class="card">
-        <p>Sudah siap melihat kejutan?</p>
-        <button onclick="start()">SIAP!</button>
+  <!-- ══════════ PLAYER COMMANDS ══════════ -->
+  <div class="section-title">🎮 Player Commands</div>
+  <div class="cat-grid" id="player-grid"></div>
+
+  <!-- ══════════ FACTION COMMANDS ══════════ -->
+  <div class="section-title">👮 Faction & Organisasi</div>
+  <div class="cat-grid" id="faction-grid"></div>
+
+  <!-- ══════════ DYNAMIC WORLD ══════════ -->
+  <div class="section-title">🌍 Dunia & Properti</div>
+  <div class="cat-grid" id="world-grid"></div>
+
+  <!-- ══════════ ENTERTAINMENT ══════════ -->
+  <div class="section-title">🎲 Hiburan & Mini-Game</div>
+  <div class="cat-grid" id="fun-grid"></div>
+
+  <!-- ══════════ ADMIN GATE ══════════ -->
+  <div class="section-title">🛡️ Admin &amp; Management</div>
+
+  <div class="admin-gate" id="admin-gate">
+    <span class="gate-icon">🔐</span>
+    <div class="gate-title">Admin Area</div>
+    <div class="gate-sub">Masukkan Discord User ID kamu untuk mengakses daftar command admin & management.</div>
+    <div class="gate-input-wrap">
+      <input type="text" class="gate-input" id="discord-id-input" placeholder="Discord User ID (contoh: 923107350125084702)" maxlength="22" />
+      <button class="gate-btn" onclick="verifyAdmin()">Verifikasi</button>
     </div>
-</div>
-
-<!-- MAIN -->
-<div id="main-stage">
-
-    <div class="main-container">
-
-<!-- BOX ROMANTIS -->
-<div class="love-box">
-
-    <div class="emoji">❤️</div>
-
-    <div class="love-title">Untuk Melda</div>
-
-    <div class="love-text">
-        Di antara banyaknya hari yang pernah aku jalani,  
-        hari ini terasa berbeda karena ada kamu di dalamnya.  
-
-        Kamu adalah alasan mengapa senyum bisa muncul  
-        tanpa alasan yang jelas.  
-
-        Terima kasih sudah hadir di hidupku,  
-        terima kasih sudah menjadi seseorang  
-        yang membuat dunia terasa lebih hangat.  
-
-        Aku mungkin tidak selalu sempurna,  
-        tapi satu hal yang pasti...  
-
-        <strong>aku selalu bersyukur karena ada kamu.</strong> ❤️
+    <div class="gate-error" id="gate-error">❌ Discord ID tidak terdaftar sebagai admin.</div>
+    <div class="gate-hint">
+      Cara cari Discord ID: Aktifkan <code>Developer Mode</code> di Settings Discord → klik kanan profil → <code>Copy User ID</code>
     </div>
+  </div>
 
-</div>
-
-<!-- PLAYER -->
-<div class="music-player">
-
-    <div class="vinyl" id="vinyl">
-
-        <img src="imgmel/cover.jpeg" class="vinyl-label">
-
+  <!-- Admin content (hidden until unlocked) -->
+  <div id="admin-content">
+    <div class="unlocked-banner">
+      <span class="icon">✅</span>
+      <div>
+        <div class="msg">Akses Admin Diberikan</div>
+        <div class="sub">Kamu diverifikasi sebagai admin Mevitra Pride. Jangan share halaman ini sembarangan.</div>
+      </div>
     </div>
-
-    <img src="imgmel/cover.jpeg" class="cover">
-
-</div>
-
-</div>
-
-<div id="dramatic-text">HBD MELDA ❤️</div>
+    <div class="cat-grid" id="admin-grid"></div>
+    <div class="section-title" style="margin-top:32px;">👑 Pengurus &amp; Management</div>
+    <div class="cat-grid" id="mgmt-grid"></div>
+  </div>
 
 </div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <p>Mevitra Pride Roleplay &mdash; <span>©2025</span> &mdash; Dibuat untuk keperluan internal server</p>
+  <p style="margin-top:6px; font-size:11px;">Untuk menambah/hapus admin ID: edit bagian <code style="color:var(--orange)">ADMIN_IDS</code> di source code halaman ini</p>
+</footer>
 
 <script>
+/* ═══════════════════════════════════════════════
+   CONFIG: Tambah/hapus Discord ID admin di sini
+   ═══════════════════════════════════════════════ */
+const ADMIN_IDS = [
+  "923107350125084702",   // Owner
+  // tambah ID lain di bawah ini, format: "ID_DISCORD_DISINI",
+];
 
-    const song=document.getElementById("song")
-    const vinyl=document.getElementById("vinyl")
+/* ═══════════════════════════════════════════════
+   DATA: Semua command beserta deskripsi & kategori
+   ═══════════════════════════════════════════════ */
+const CATEGORIES = {
 
-    function checkPass(){
+  /* ─── PLAYER: CHAT & AKSI ─── */
+  "chat": {
+    label: "💬 Chat & Komunikasi",
+    grid: "player-grid",
+    cmds: [
+      { cmd: "/s", desc: "Bicara normal (say) di sekitar kamu" },
+      { cmd: "/b", desc: "OOC chat (out-of-character) lokal" },
+      { cmd: "/w", desc: "Bisik ke player terdekat" },
+      { cmd: "/m", desc: "Megaphone — suara keras ke area luas" },
+      { cmd: "/me", desc: "Deskripsi aksi karakter (RP action)" },
+      { cmd: "/do", desc: "Deskripsi situasi/lingkungan (RP)" },
+      { cmd: "/pm [id] [pesan]", desc: "Kirim pesan privat ke player" },
+      { cmd: "/apm [id] [pesan]", desc: "PM anonymous (tanpa nama)" },
+      { cmd: "/r [pesan]", desc: "Bicara di radio faction" },
+      { cmd: "/d [pesan]", desc: "Chat faction (department)" },
+      { cmd: "/od [pesan]", desc: "OOC faction chat" },
+      { cmd: "/f [pesan]", desc: "Chat keluarga/families" },
+      { cmd: "/sv [frekuensi]", desc: "Set frekuensi radio" },
+      { cmd: "/vkeys", desc: "Toggle voice key radio" },
+      { cmd: "/tac", desc: "Toggle radio tactical mode" },
+    ]
+  },
 
-        if(document.getElementById("passInput").value.toLowerCase()=="melda"){
+  /* ─── PLAYER: UMUM ─── */
+  "player-general": {
+    label: "👤 Karakter & Umum",
+    grid: "player-grid",
+    cmds: [
+      { cmd: "/stats", desc: "Lihat statistik karakter kamu" },
+      { cmd: "/flist", desc: "Lihat daftar faction dan jumlah on-duty" },
+      { cmd: "/fonline", desc: "Lihat member online dalam faction kamu" },
+      { cmd: "/elist", desc: "Daftar animasi & emote" },
+      { cmd: "/fixme", desc: "Laporan bug visual / karakter stuck / frozen" },
+      { cmd: "/settings", desc: "Buka pengaturan akun kamu" },
+      { cmd: "/fps", desc: "Lihat FPS dan info koneksi kamu" },
+      { cmd: "/saving", desc: "Simpan data karakter manual" },
+      { cmd: "/cursor", desc: "Toggle kursor mouse" },
+      { cmd: "/id [id]", desc: "Lihat info singkat player berdasarkan ID" },
+      { cmd: "/sid", desc: "Sembunyikan/tampilkan nametag kamu" },
+      { cmd: "/near", desc: "Lihat player terdekat di sekitarmu" },
+      { cmd: "/ado", desc: "Toggle display karakter (animasi idle)" },
+      { cmd: "/evipname", desc: "Edit nama VIP kamu" },
+      { cmd: "/sc", desc: "Buka menu skin/clothes" },
+      { cmd: "/sion", desc: "Toggle status online/AFK" },
+      { cmd: "/skipcs", desc: "Skip cutscene" },
+      { cmd: "/rst", desc: "Reset skin/animasi karakter" },
+    ]
+  },
 
-            gsap.to("#login-stage",{opacity:0,duration:0.6,onComplete:()=>{
+  /* ─── PLAYER: AKSI DUNIA ─── */
+  "player-world": {
+    label: "🏃 Aksi & Interaksi Dunia",
+    grid: "player-grid",
+    cmds: [
+      { cmd: "/carry [id]", desc: "Gendong/bawa player lain" },
+      { cmd: "/uncarry", desc: "Lepaskan player yang sedang digendong" },
+      { cmd: "/pulltrunk", desc: "Buka bagasi kendaraan terdekat" },
+      { cmd: "/exittrunk", desc: "Keluar dari bagasi kendaraan" },
+      { cmd: "/skydive", desc: "Skydive / lompat dari ketinggian" },
+      { cmd: "/dice", desc: "Lempar dadu (roleplay gambling)" },
+      { cmd: "/duplikat", desc: "Duplikat karakter untuk kebutuhan RP" },
+      { cmd: "/delay [detik]", desc: "Countdown timer di chat" },
+      { cmd: "/cl", desc: "Cek lisensi mengemudi/senjata kamu" },
+      { cmd: "/weapon", desc: "Lihat info senjata yang dibawa" },
+      { cmd: "/stopsmoke", desc: "Hentikan efek asap rokok" },
+      { cmd: "/autowalk", desc: "Toggle auto-walk karakter" },
+      { cmd: "/xgun", desc: "Cek senjata yang sedang dipegang" },
+      { cmd: "/attachedit", desc: "Edit attachment object pada karakter" },
+      { cmd: "/flashlight", desc: "Toggle senter / flashlight" },
+      { cmd: "/sb", desc: "Toggle seatbelt kendaraan" },
+      { cmd: "/seatbelt", desc: "Toggle sabuk pengaman" },
+    ]
+  },
 
-                document.getElementById("login-stage").style.display="none"
-                document.getElementById("confirm-stage").style.display="flex"
+  /* ─── PLAYER: KENDARAAN ─── */
+  "vehicle-player": {
+    label: "🚗 Kendaraan (Player)",
+    grid: "player-grid",
+    cmds: [
+      { cmd: "/en", desc: "Nyalakan/matikan mesin kendaraan" },
+      { cmd: "/windows", desc: "Buka/tutup jendela kendaraan" },
+      { cmd: "/eject [id]", desc: "Keluarkan penumpang dari kendaraan" },
+      { cmd: "/tow [id]", desc: "Derek kendaraan lain" },
+      { cmd: "/untow", desc: "Lepaskan kendaraan yang ditarik" },
+      { cmd: "/sl", desc: "Kunci/buka kunci kendaraan" },
+      { cmd: "/sellveh [id] [harga]", desc: "Jual kendaraan pribadi ke player lain" },
+      { cmd: "/sendveh [id]", desc: "Kirim kendaraan ke garasi" },
+      { cmd: "/takeoutveh [id]", desc: "Keluarkan kendaraan dari garasi" },
+      { cmd: "/respawnveh", desc: "Respawn kendaraan milikmu" },
+      { cmd: "/trunkfix", desc: "Fix bagasi kendaraan yang stuck" },
+      { cmd: "/buymod", desc: "Beli modifikasi kendaraan di workshop" },
+      { cmd: "/cvc", desc: "Cek kendaraan terdekat" },
+      { cmd: "/fcrash", desc: "Laporan tabrakan kendaraan" },
+      { cmd: "/vinvis", desc: "Toggle invisibility kendaraan" },
+    ]
+  },
 
-            }})
+  /* ─── PLAYER: KOMUNIKASI KHUSUS ─── */
+  "player-special": {
+    label: "📱 Fitur Khusus",
+    grid: "player-grid",
+    cmds: [
+      { cmd: "/cmusik", desc: "Hentikan musik yang sedang diputar" },
+      { cmd: "/takebb", desc: "Ambil kembali boombox yang sudah dipasang (harus dekat 3m)" },
+      { cmd: "/helpbb", desc: "Lihat panduan penggunaan boombox" },
+      { cmd: "/ems", desc: "Panggil EMS terdekat" },
+      { cmd: "/dokterlokal", desc: "Beli obat dari dokter lokal" },
+      { cmd: "/accept", desc: "Terima permintaan (cuff, escort, dll)" },
+      { cmd: "/911 [pesan]", desc: "Hubungi kepolisian darurat" },
+      { cmd: "/222 [pesan]", desc: "Hubungi EMS darurat" },
+      { cmd: "/pm [id]", desc: "Kirim pesan privat ke player" },
+      { cmd: "/report [pesan]", desc: "Buat laporan ke admin" },
+      { cmd: "/ask [pesan]", desc: "Tanya ke admin online" },
+      { cmd: "/ar", desc: "Lihat status laporanmu" },
+      { cmd: "/sm", desc: "Lihat statistik server saat ini" },
+      { cmd: "/aotot", desc: "Toggle auto-otot (muscle flex RP)" },
+    ]
+  },
 
-        }
+  /* ─── ANIMASI ─── */
+  "animation": {
+    label: "🕺 Animasi & Emote",
+    grid: "player-grid",
+    cmds: [
+      { cmd: "/e [nama]", desc: "Mainkan animasi/emote" },
+      { cmd: "/elist", desc: "Daftar semua animasi tersedia" },
+      { cmd: "/eilist", desc: "Daftar animasi interaksi" },
+      { cmd: "/eprop [animasi]", desc: "Animasi dengan prop/object" },
+      { cmd: "/einter", desc: "Daftar animasi interior" },
+      { cmd: "/animnear", desc: "Lihat animasi player di sekitarmu" },
+      { cmd: "/stopanims", desc: "Hentikan semua animasi" },
+      { cmd: "/anims", desc: "Buka menu animasi lengkap" },
+      { cmd: "/aindex", desc: "Index animasi admin (lihat semua)" },
+      { cmd: "/attachedit", desc: "Edit attachment pada karakter saat animasi" },
+    ]
+  },
 
-    }
+  /* ─── FACTION: POLISI ─── */
+  "police": {
+    label: "🚔 Kepolisian (SAPD)",
+    grid: "faction-grid",
+    cmds: [
+      { cmd: "/callsign [nomor]", desc: "Set callsign unit kepolisian" },
+      { cmd: "/mdt", desc: "Buka MDT (Mobile Data Terminal)" },
+      { cmd: "/taser [id]", desc: "Gunakan taser ke player" },
+      { cmd: "/tackle [id]", desc: "Tackle / jatuhkan player" },
+      { cmd: "/flare", desc: "Pasang flare/light di jalan" },
+      { cmd: "/destroyflare", desc: "Hancurkan flare yang dipasang" },
+      { cmd: "/togsiren", desc: "Toggle sirene kendaraan polisi" },
+      { cmd: "/trace [id]", desc: "Lacak posisi player (butuh ijin)" },
+      { cmd: "/tepi", desc: "Perintahkan kendaraan menepi" },
+      { cmd: "/tackle [id]", desc: "Gulingkan player ke tanah" },
+      { cmd: "/makegunlic", desc: "Buat lisensi senjata untuk player" },
+      { cmd: "/takesim", desc: "Sita SIM player" },
+      { cmd: "/takeskck", desc: "Sita SKCK player" },
+      { cmd: "/takegunlic", desc: "Sita lisensi senjata" },
+      { cmd: "/takektp", desc: "Sita KTP player" },
+      { cmd: "/takeradio", desc: "Sita radio player" },
+      { cmd: "/makeradio", desc: "Buat radio untuk player" },
+      { cmd: "/makekta", desc: "Buat KTA (kartu tanda anggota)" },
+      { cmd: "/makesks", desc: "Buat SKS (Surat Keterangan Sehat)" },
+      { cmd: "/makebpjs", desc: "Buat BPJS untuk player" },
+      { cmd: "/makeskck [id]", desc: "Buat SKCK untuk player" },
+    ]
+  },
 
-    function start(){
+  /* ─── FACTION: UMUM ─── */
+  "faction-general": {
+    label: "🏛️ Faction Umum",
+    grid: "faction-grid",
+    cmds: [
+      { cmd: "/aduty", desc: "Toggle on/off duty admin" },
+      { cmd: "/fhelp", desc: "Panduan command faction kamu" },
+      { cmd: "/fa [pesan]", desc: "Pengumuman/announce faction" },
+      { cmd: "/clear", desc: "Bersihkan chat faction" },
+      { cmd: "/g", desc: "Chat geng/gang lokal" },
+      { cmd: "/bisnis", desc: "Buka menu bisnis yang dimiliki faction" },
+      { cmd: "/fgarage", desc: "Buka garasi faction" },
+      { cmd: "/carsteal", desc: "Sistem curi kendaraan" },
+      { cmd: "/csinfo", desc: "Info carsteal saat ini" },
+      { cmd: "/blacklist [id]", desc: "Blacklist player dari faction/area" },
+      { cmd: "/unblacklist [id]", desc: "Hapus blacklist player" },
+      { cmd: "/families", desc: "Lihat info keluarga/gang" },
+      { cmd: "/famcreate [nama]", desc: "Buat keluarga baru" },
+      { cmd: "/famdelete [id]", desc: "Hapus keluarga" },
+      { cmd: "/famedit [id]", desc: "Edit keluarga" },
+      { cmd: "/famonline", desc: "Lihat member keluarga online" },
+      { cmd: "/setfamilies [id] [fam]", desc: "Set keluarga player" },
+    ]
+  },
 
-        gsap.to("#confirm-stage",{opacity:0,duration:0.8,onComplete:()=>{
+  /* ─── FACTION: PEKERJAAN ─── */
+  "jobs": {
+    label: "💼 Pekerjaan (Jobs)",
+    grid: "faction-grid",
+    cmds: [
+      { cmd: "/taxiduty", desc: "Toggle duty sopir taksi (Trans)" },
+      { cmd: "/acceptorder", desc: "Terima order pengiriman" },
+      { cmd: "/122", desc: "Dispatch Trans Kota Mevitra" },
+      { cmd: "/110", desc: "Dispatch Kepolisian" },
+      { cmd: "/111", desc: "Dispatch EMS" },
+      { cmd: "/tandu [id]", desc: "Bawa player dengan tandu (EMS)" },
+      { cmd: "/service", desc: "Buka menu servis kendaraan (Bengkel)" },
+      { cmd: "/workshopmenu", desc: "Menu workshop bengkel" },
+      { cmd: "/wsa", desc: "Mulai servis kendaraan" },
+      { cmd: "/takekit", desc: "Ambil toolkit listrik (Electrician)" },
+      { cmd: "/toggleelectric", desc: "Toggle pekerjaan elektrisian" },
+      { cmd: "/buyplant [id]", desc: "Beli tanaman ladang" },
+      { cmd: "/sellplant", desc: "Jual hasil panen ladang" },
+      { cmd: "/destroypacket", desc: "Hancurkan paket smuggler" },
+      { cmd: "/tracepacket", desc: "Lacak paket smuggler" },
+      { cmd: "/resetsmuggler", desc: "Reset job smuggler" },
+      { cmd: "/setpacket [pos]", desc: "Set posisi paket smuggler" },
+    ]
+  },
 
-            document.getElementById("confirm-stage").remove()
+  /* ─── WORLD: PROPERTI ─── */
+  "property": {
+    label: "🏠 Rumah & Properti",
+    grid: "world-grid",
+    cmds: [
+      { cmd: "/buyhouse [id]", desc: "Beli rumah yang tersedia" },
+      { cmd: "/sellhouse [id]", desc: "Jual rumah milikmu" },
+      { cmd: "/edithouse [id]", desc: "Edit properti rumah (admin)" },
+      { cmd: "/customint [id]", desc: "Custom interior rumah" },
+      { cmd: "/addhouse [info]", desc: "Tambah rumah baru (admin)" },
+      { cmd: "/addrusun", desc: "Tambah unit rusun (admin)" },
+      { cmd: "/editrusun [id]", desc: "Edit rusun" },
+      { cmd: "/basement", desc: "Buka basement area" },
+      { cmd: "/addgudang", desc: "Tambah gudang baru (admin)" },
+      { cmd: "/editgudang [id]", desc: "Edit gudang" },
+      { cmd: "/removegudang [id]", desc: "Hapus gudang" },
+    ]
+  },
 
-            showPlayer()
+  /* ─── WORLD: BISNIS & EKONOMI ─── */
+  "business": {
+    label: "🏪 Bisnis & Ekonomi",
+    grid: "world-grid",
+    cmds: [
+      { cmd: "/bisnis [id]", desc: "Interaksi dengan bisnis terdekat" },
+      { cmd: "/bisnismenu [id]", desc: "Buka menu manajemen bisnis" },
+      { cmd: "/bisproduct [id]", desc: "Kelola produk bisnis" },
+      { cmd: "/bm [id]", desc: "Buka brankas bisnis" },
+      { cmd: "/bwithdraw [id] [jml]", desc: "Tarik uang dari brankas bisnis" },
+      { cmd: "/addbisnis [info]", desc: "Tambah bisnis baru (admin)" },
+      { cmd: "/editbisnis [id]", desc: "Edit bisnis" },
+      { cmd: "/createbisnis", desc: "Buat bisnis dari nol" },
+      { cmd: "/addpasar", desc: "Tambah stan pasar (admin)" },
+      { cmd: "/addwarung [info]", desc: "Tambah warung (admin)" },
+      { cmd: "/addrental [info]", desc: "Tambah kendaraan rental (admin)" },
+      { cmd: "/addatm", desc: "Tambah ATM (admin)" },
+    ]
+  },
 
-        }})
+  /* ─── WORLD: GATE, DOOR, OBJECT ─── */
+  "mapping": {
+    label: "🗺️ Mapping & Dunia Dinamis",
+    grid: "world-grid",
+    cmds: [
+      { cmd: "/createobject [id]", desc: "Buat object dinamis di posisimu" },
+      { cmd: "/editobject [id]", desc: "Edit object dinamis" },
+      { cmd: "/deleteobject [id]", desc: "Hapus object" },
+      { cmd: "/clone [id]", desc: "Duplikat object" },
+      { cmd: "/createobjecttext [id]", desc: "Buat text di atas object" },
+      { cmd: "/addgate [info]", desc: "Tambah gerbang dinamis" },
+      { cmd: "/editgate [id]", desc: "Edit gerbang" },
+      { cmd: "/createdoor [info]", desc: "Buat pintu interaktif" },
+      { cmd: "/editdoor [id]", desc: "Edit pintu" },
+      { cmd: "/addlabel [teks]", desc: "Tambah 3D text label" },
+      { cmd: "/editlabel [id]", desc: "Edit label" },
+      { cmd: "/removelabel [id]", desc: "Hapus label" },
+      { cmd: "/addicon [info]", desc: "Tambah map icon" },
+      { cmd: "/editicon [id]", desc: "Edit icon" },
+      { cmd: "/destroyicon [id]", desc: "Hapus icon" },
+      { cmd: "/addbutton [info]", desc: "Tambah tombol interaksi" },
+      { cmd: "/editbutton [id]", desc: "Edit tombol" },
+      { cmd: "/removebutton [id]", desc: "Hapus tombol" },
+      { cmd: "/addactor [info]", desc: "Tambah NPC actor" },
+      { cmd: "/editactor [id]", desc: "Edit actor" },
+      { cmd: "/destroyactor [id]", desc: "Hapus actor" },
+    ]
+  },
 
-    }
+  /* ─── ENTERTAINMENT ─── */
+  "entertainment": {
+    label: "🎰 Blackjack & Casino",
+    grid: "fun-grid",
+    cmds: [
+      { cmd: "/bjoin [meja]", desc: "Gabung meja blackjack" },
+      { cmd: "/bleave", desc: "Keluar dari meja blackjack" },
+      { cmd: "/bbet [jumlah]", desc: "Pasang taruhan blackjack" },
+      { cmd: "/bhit", desc: "Ambil kartu tambahan (Hit)" },
+      { cmd: "/bstand", desc: "Berhenti ambil kartu (Stand)" },
+      { cmd: "/bdouble", desc: "Double down taruhan" },
+      { cmd: "/createbjtable [info]", desc: "Buat meja blackjack (admin)" },
+      { cmd: "/removebjtable [id]", desc: "Hapus meja blackjack (admin)" },
+      { cmd: "/spin", desc: "Putar slot machine" },
+      { cmd: "/changebet [jumlah]", desc: "Ganti taruhan slot machine" },
+      { cmd: "/cvc", desc: "Cek kemenangan slot terakhir" },
+    ]
+  },
 
-    function showPlayer(){
+  "race": {
+    label: "🏎️ Race & Kompetisi",
+    grid: "fun-grid",
+    cmds: [
+      { cmd: "/race [nama]", desc: "Buat race baru" },
+      { cmd: "/startrace", desc: "Mulai race yang sudah dibuat" },
+      { cmd: "/endrace", desc: "Akhiri race" },
+      { cmd: "/exitrace", desc: "Keluar dari race" },
+      { cmd: "/deltrack [nama]", desc: "Hapus track race" },
+      { cmd: "/records", desc: "Lihat rekor race" },
+      { cmd: "/resetrecord [nama]", desc: "Reset rekor race" },
+      { cmd: "/robbank", desc: "Mulai perampokan bank" },
+    ]
+  },
 
-        document.getElementById("main-stage").style.display="block"
+  "music": {
+    label: "🎵 Musik & Audio",
+    grid: "fun-grid",
+    cmds: [
+      { cmd: "/takebb", desc: "Ambil boombox yang sudah dipasang" },
+      { cmd: "/helpbb", desc: "Panduan boombox" },
+      { cmd: "/cmusik", desc: "Stop musik yang sedang diputar untukmu" },
+      { cmd: "/fashion", desc: "Buka menu fashion/aksesori" },
+      { cmd: "/tag [teks]", desc: "Set tag di atas kepala karakter" },
+    ]
+  },
 
-        gsap.from(".love-box",{x:-100,opacity:0,duration:1.5})
+  /* ─── ADMIN: PLAYER MANAGEMENT ─── */
+  "admin-player": {
+    label: "👤 Admin — Kelola Player",
+    grid: "admin-grid",
+    admin: true,
+    cmds: [
+      { cmd: "/kick [id] [alasan]", desc: "Kick player dari server" },
+      { cmd: "/ban [id] [alasan]", desc: "Ban player permanent" },
+      { cmd: "/banip [id]", desc: "Ban berdasarkan IP" },
+      { cmd: "/unban [nama]", desc: "Unban player" },
+      { cmd: "/unbanip [ip]", desc: "Unban IP tertentu" },
+      { cmd: "/unbanucp [ucp]", desc: "Unban berdasarkan UCP" },
+      { cmd: "/blockucp [id]", desc: "Blokir UCP player" },
+      { cmd: "/ajail [id] [menit] [alasan]", desc: "Masukkan player ke penjara" },
+      { cmd: "/unjail [id]", desc: "Bebaskan player dari penjara" },
+      { cmd: "/jail [id] [menit]", desc: "Jail player (singkat)" },
+      { cmd: "/warn [id] [alasan]", desc: "Beri peringatan ke player" },
+      { cmd: "/unwarn [id]", desc: "Hapus warn player" },
+      { cmd: "/awarn [id]", desc: "Warn versi admin" },
+      { cmd: "/kick [id]", desc: "Kick player" },
+      { cmd: "/freeze [id]", desc: "Bekukan gerak player" },
+      { cmd: "/unfreeze [id]", desc: "Bebaskan freeze player" },
+      { cmd: "/slap [id]", desc: "Slap player (terbang)" },
+      { cmd: "/torture [id]", desc: "Siksa player (RP punishment)" },
+      { cmd: "/explode [id]", desc: "Ledakkan player" },
+      { cmd: "/acuff [id]", desc: "Borgol player" },
+      { cmd: "/auncuff [id]", desc: "Buka borgol player" },
+      { cmd: "/aunarrest [id]", desc: "Batalkan arrest player" },
+      { cmd: "/arelease [id]", desc: "Release player dari tahanan" },
+      { cmd: "/peject [id]", desc: "Keluarkan player dari kendaraan" },
+      { cmd: "/kickall", desc: "Kick semua player" },
+      { cmd: "/kickallplayer", desc: "Kick semua non-admin" },
+    ]
+  },
 
-        gsap.from(".cover",{x:200,opacity:0,duration:1.5})
+  /* ─── ADMIN: STATS & SET ─── */
+  "admin-stats": {
+    label: "📊 Admin — Stats & Set",
+    grid: "admin-grid",
+    admin: true,
+    cmds: [
+      { cmd: "/setadmin [id] [level]", desc: "Set level admin player (0–7)" },
+      { cmd: "/setlevel [id] [level]", desc: "Set level karakter player" },
+      { cmd: "/setvip [id] [level]", desc: "Set status VIP player" },
+      { cmd: "/sethp [id] [hp]", desc: "Set HP player" },
+      { cmd: "/sethpall [hp]", desc: "Set HP semua player" },
+      { cmd: "/sethbe [id] [armor]", desc: "Set armor player" },
+      { cmd: "/sethbeall [armor]", desc: "Set armor semua player" },
+      { cmd: "/setmoney [id] [jml]", desc: "Set uang tunai player" },
+      { cmd: "/givemoney [id] [jml]", desc: "Beri uang ke player" },
+      { cmd: "/givemoneyall [jml]", desc: "Beri uang ke semua player" },
+      { cmd: "/takemoney [id] [jml]", desc: "Ambil uang dari player" },
+      { cmd: "/setbankmoney [id] [jml]", desc: "Set uang di bank player" },
+      { cmd: "/setam [id] [jml]", desc: "Set ammo senjata yang dipegang" },
+      { cmd: "/setstress [id] [val]", desc: "Set level stress player" },
+      { cmd: "/setstressall [val]", desc: "Set stress semua player" },
+      { cmd: "/setjob [id] [job]", desc: "Set pekerjaan player" },
+      { cmd: "/setskin [id] [skin]", desc: "Ganti skin/model player" },
+      { cmd: "/setbone [id] [bone]", desc: "Set attachment ke tulang karakter" },
+      { cmd: "/setboneall [bone]", desc: "Set attachment ke semua player" },
+      { cmd: "/setpaycheck [id] [jml]", desc: "Set jumlah paycheck player" },
+      { cmd: "/setadminname [nama]", desc: "Set nama admin tampil di log" },
+      { cmd: "/setvw [id] [vw]", desc: "Set virtual world player" },
+      { cmd: "/setint [id] [int]", desc: "Set interior player" },
+      { cmd: "/astats [id]", desc: "Lihat stats detail player (admin view)" },
+      { cmd: "/ainv [id]", desc: "Lihat inventory player" },
+      { cmd: "/asetitem [jml] [item]", desc: "Beri item ke diri sendiri (admin)" },
+      { cmd: "/setitem [id] [item] [jml]", desc: "Beri item inventory ke player" },
+      { cmd: "/clearitems [id]", desc: "Hapus semua item inventory player" },
+      { cmd: "/aremoveinv [id] [item]", desc: "Hapus item spesifik dari inventory" },
+      { cmd: "/checkucp [id]", desc: "Cek info UCP player" },
+      { cmd: "/checknetwork [id]", desc: "Cek kualitas koneksi player" },
+      { cmd: "/checkdiscorducp [id]", desc: "Verifikasi Discord player" },
+      { cmd: "/checkmask [id]", desc: "Cek apakah player pakai masker" },
+    ]
+  },
 
-        gsap.from(".vinyl",{x:200,opacity:0,duration:1.5,delay:0.4,onComplete:()=>{
+  /* ─── ADMIN: TELEPORT ─── */
+  "admin-tp": {
+    label: "📍 Admin — Teleport & Lokasi",
+    grid: "admin-grid",
+    admin: true,
+    cmds: [
+      { cmd: "/goto [id]", desc: "Teleport ke player" },
+      { cmd: "/gotols", desc: "Teleport ke Los Santos" },
+      { cmd: "/gotosf", desc: "Teleport ke San Fierro" },
+      { cmd: "/gotoco", desc: "Teleport ke Countryside" },
+      { cmd: "/tpmap", desc: "Teleport via klik di peta" },
+      { cmd: "/sendto [id] [x] [y] [z]", desc: "Kirim player ke koordinat" },
+      { cmd: "/gethere [id]", desc: "Teleport player ke posisimu" },
+      { cmd: "/p2p [id]", desc: "Teleport dua player saling berdekatan" },
+      { cmd: "/spec [id]", desc: "Spectate / intip player" },
+      { cmd: "/camerapos", desc: "Cek posisi kamera saat ini" },
+      { cmd: "/ufo", desc: "Aktifkan mode terbang UFO" },
+      { cmd: "/unufo", desc: "Matikan mode UFO" },
+    ]
+  },
 
-            song.play()
+  /* ─── ADMIN: WEAPON & VEHICLE ─── */
+  "admin-veh": {
+    label: "🚗 Admin — Kendaraan & Senjata",
+    grid: "admin-grid",
+    admin: true,
+    cmds: [
+      { cmd: "/veh [model]", desc: "Spawn kendaraan berdasarkan model ID" },
+      { cmd: "/dveh", desc: "Hapus kendaraan yang ditumpangi" },
+      { cmd: "/adveh [id]", desc: "Hapus kendaraan player tertentu" },
+      { cmd: "/delvehall", desc: "Hapus semua kendaraan di server" },
+      { cmd: "/respawnallveh", desc: "Respawn semua kendaraan" },
+      { cmd: "/respawnrad [radius]", desc: "Respawn kendaraan dalam radius" },
+      { cmd: "/respawnjobvehicle", desc: "Respawn kendaraan job" },
+      { cmd: "/respawnsidejob", desc: "Respawn kendaraan side job" },
+      { cmd: "/aveh [id] [model]", desc: "Ganti model kendaraan player" },
+      { cmd: "/avehlist [id]", desc: "Lihat daftar kendaraan player" },
+      { cmd: "/vehname [id]", desc: "Lihat nama kendaraan by ID" },
+      { cmd: "/vmodels", desc: "Lihat daftar model kendaraan tersedia" },
+      { cmd: "/customplate [id] [plat]", desc: "Custom plat nomor kendaraan" },
+      { cmd: "/custombagasi [id] [cap]", desc: "Custom kapasitas bagasi" },
+      { cmd: "/vsethealth [id] [hp]", desc: "Set HP/kondisi kendaraan" },
+      { cmd: "/aseat [id]", desc: "Dudukkan player di kendaraan admin" },
+      { cmd: "/entercar [id]", desc: "Masuk ke kendaraan player" },
+      { cmd: "/agiveplate [id]", desc: "Beri plat nomor ke player" },
+      { cmd: "/avcolor [id] [c1] [c2]", desc: "Ganti warna kendaraan" },
+      { cmd: "/aimportveh [id]", desc: "Import kendaraan dari DB" },
+      { cmd: "/amakepv [id] [model]", desc: "Buat kendaraan pribadi untuk player" },
+      { cmd: "/giveweap [id] [senjata] [ammo]", desc: "Beri senjata ke player" },
+      { cmd: "/giveweapall [senjata] [ammo]", desc: "Beri senjata ke semua" },
+      { cmd: "/aweap [id] [senjata] [ammo]", desc: "Set senjata player" },
+      { cmd: "/reloadweap [id]", desc: "Reload senjata player" },
+      { cmd: "/resetweap [id]", desc: "Hapus semua senjata player" },
+    ]
+  },
 
-            vinyl.style.animationPlayState="running"
+  /* ─── ADMIN: SERVER ─── */
+  "admin-server": {
+    label: "⚙️ Admin — Server & Pengumuman",
+    grid: "admin-grid",
+    admin: true,
+    cmds: [
+      { cmd: "/ann [pesan]", desc: "Kirim announcement ke semua player" },
+      { cmd: "/annp [pesan]", desc: "Announcement premium (highlight)" },
+      { cmd: "/settime [jam]", desc: "Set waktu di server (0–23)" },
+      { cmd: "/setweather [id]", desc: "Set cuaca server (0–45)" },
+      { cmd: "/playsong [url]", desc: "Putar lagu ke semua player" },
+      { cmd: "/stopsong", desc: "Hentikan lagu server" },
+      { cmd: "/sound [id]", desc: "Putar sound effect ke semua" },
+      { cmd: "/restart", desc: "Restart gamemode server" },
+      { cmd: "/servertick", desc: "Cek server tick rate" },
+      { cmd: "/clearallchat", desc: "Bersihkan chat semua player" },
+      { cmd: "/togooc", desc: "Toggle mode OOC global" },
+      { cmd: "/admins", desc: "Lihat daftar admin online" },
+      { cmd: "/stafflist", desc: "Daftar staff/admin server" },
+      { cmd: "/aduty", desc: "Toggle on/off duty admin" },
+      { cmd: "/ahelp", desc: "Lihat daftar command admin" },
+      { cmd: "/togspy [id]", desc: "Spy/pantau chat player" },
+      { cmd: "/earthquake", desc: "Trigger efek gempa di server" },
+      { cmd: "/goodmood", desc: "Toggle good mood server (efek positif)" },
+      { cmd: "/arevive [id]", desc: "Revive player yang mati" },
+      { cmd: "/areviveall", desc: "Revive semua player" },
+      { cmd: "/afix [id]", desc: "Fix HP + kendaraan player" },
+      { cmd: "/fixes", desc: "Lihat daftar fix request dari player" },
+      { cmd: "/makequiz [pertanyaan]", desc: "Buat quiz untuk player" },
+      { cmd: "/qa [jawaban]", desc: "Jawab quiz aktif" },
+      { cmd: "/getobj", desc: "Dapatkan info object yang dilihat" },
+      { cmd: "/addnewbie [id]", desc: "Tandai player sebagai newbie" },
+      { cmd: "/removenewbie [id]", desc: "Hapus status newbie" },
+      { cmd: "/onlinelist", desc: "Lihat semua player online + info" },
+      { cmd: "/listafk", desc: "Lihat semua player yang AFK" },
+      { cmd: "/playtimelist", desc: "Lihat ranking playtime server" },
+      { cmd: "/adlog [id]", desc: "Lihat damage log player" },
+      { cmd: "/dlog [id]", desc: "Damage log detail" },
+      { cmd: "/dlogoff", desc: "Matikan damage log" },
+      { cmd: "/setwb [id] [val]", desc: "Set wanted bintang player" },
+      { cmd: "/id [id]", desc: "Info detail player by ID (admin)" },
+      { cmd: "/getip [id]", desc: "Lihat IP player" },
+      { cmd: "/aka [id]", desc: "Lihat alias/nama lain player" },
+      { cmd: "/akaip [id]", desc: "Lihat alias berdasarkan IP" },
+      { cmd: "/togspy [id]", desc: "Monitor chat player" },
+      { cmd: "/abstatus", desc: "Status anti-cheat sistem" },
+      { cmd: "/setrender [jarak]", desc: "Set jarak render streamer" },
+      { cmd: "/afactduty [id] [fac]", desc: "Set duty faction untuk player" },
+      { cmd: "/jetpack [id]", desc: "Beri jetpack ke player" },
+      { cmd: "/ahide", desc: "Sembunyikan nama admin di list" },
+      { cmd: "/makewarga [id]", desc: "Set player menjadi warga" },
+      { cmd: "/makewargaoff [id]", desc: "Cabut status warga" },
+      { cmd: "/checkmypoint", desc: "Cek poin admin kamu" },
+    ]
+  },
 
-            gsap.to("#dramatic-text",{opacity:1,duration:2})
+  /* ─── MANAGEMENT ─── */
+  "management": {
+    label: "👑 Pengurus & Management",
+    grid: "mgmt-grid",
+    admin: true,
+    cmds: [
+      { cmd: "/setfaction [id] [fac] [rank]", desc: "Set faction & rank player" },
+      { cmd: "/achangename [id] [nama]", desc: "Ganti nama karakter player" },
+      { cmd: "/changegender [id] [gender]", desc: "Ganti jenis kelamin karakter" },
+      { cmd: "/deletechar [id]", desc: "Hapus karakter player secara permanen" },
+      { cmd: "/aresign [id]", desc: "Resign paksa player dari faction" },
+      { cmd: "/clearwarn [id]", desc: "Hapus semua warn player" },
+      { cmd: "/resetplaytime [id]", desc: "Reset playtime karakter" },
+      { cmd: "/resetpt [id]", desc: "Reset poin playtime" },
+      { cmd: "/resetweapoff [id]", desc: "Reset senjata off-duty" },
+      { cmd: "/resetharta [id]", desc: "Reset semua harta player" },
+      { cmd: "/vote [pertanyaan]", desc: "Buat polling/vote untuk server" },
+      { cmd: "/updatedb", desc: "Force update database server" },
+      { cmd: "/addapoint [id] [jml]", desc: "Tambah poin admin ke player" },
+      { cmd: "/aresetpoint [id]", desc: "Reset poin admin player" },
+      { cmd: "/addhslot [id]", desc: "Tambah slot rumah player" },
+      { cmd: "/addvehslot [id]", desc: "Tambah slot kendaraan player" },
+      { cmd: "/rall [pesan]", desc: "Broadcast announcement management" },
+      { cmd: "/schedulemt [waktu]", desc: "Jadwalkan maintenance" },
+      { cmd: "/setthestars [id] [level]", desc: "Set level 'The Stars' player" },
+      { cmd: "/giveredmoney [id] [jml]", desc: "Beri uang merah (Premium) ke player" },
+      { cmd: "/setredmoney [id] [jml]", desc: "Set jumlah uang premium player" },
+      { cmd: "/customnumber [id] [nomor]", desc: "Custom nomor HP player" },
+      { cmd: "/customrek [id] [nomor]", desc: "Custom nomor rekening player" },
+      { cmd: "/panel", desc: "Buka panel management server" },
+      { cmd: "/forceahide [id]", desc: "Paksa sembunyikan admin tertentu" },
+      { cmd: "/dynhelp", desc: "Bantuan command dynamic world" },
+      { cmd: "/addkompensasi [id] [jml]", desc: "Beri kompensasi ke player" },
+      { cmd: "/removekompensasi [id]", desc: "Hapus kompensasi player" },
+    ]
+  },
+};
 
-            startHearts()
+/* ═══════════════════════════════════════
+   RENDER ENGINE
+   ═══════════════════════════════════════ */
+let totalCmds = 0;
 
-        }})
+function renderCategories() {
+  // Group by grid
+  Object.entries(CATEGORIES).forEach(([key, cat]) => {
+    if (cat.admin) return; // skip admin for now
+    const grid = document.getElementById(cat.grid);
+    if (!grid) return;
+    grid.appendChild(buildCard(key, cat));
+    totalCmds += cat.cmds.length;
+  });
 
-    }
+  // Admin categories
+  Object.entries(CATEGORIES).forEach(([key, cat]) => {
+    if (!cat.admin) return;
+    const grid = document.getElementById(cat.grid);
+    if (!grid) return;
+    grid.appendChild(buildCard(key, cat));
+    totalCmds += cat.cmds.length;
+  });
 
-    function startHearts(){
+  // Animate counter
+  animateCounter(document.getElementById("stat-total"), totalCmds);
 
-        setInterval(()=>{
+  // Intersection observer for card animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add("visible");
+          entry.target.style.animationDelay = "0ms";
+        }, idx * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05 });
 
-            let h=document.createElement("div")
+  document.querySelectorAll(".cat-card").forEach(card => observer.observe(card));
+}
 
-            h.className="heart"
-            h.innerHTML="❤️"
+function buildCard(key, cat) {
+  const card = document.createElement("div");
+  card.className = "cat-card";
+  card.dataset.category = key;
 
-            h.style.left=Math.random()*100+"vw"
+  const count = cat.cmds.length;
+  card.innerHTML = `
+    <div class="cat-header" onclick="toggleCard(this)">
+      <div class="cat-icon">${cat.label.split(" ")[0]}</div>
+      <div class="cat-name">${cat.label.replace(/^[\S]+\s/, '')}</div>
+      <span class="cat-count">${count}</span>
+      <span class="cat-toggle">▾</span>
+    </div>
+    <div class="cmd-list">
+      ${cat.cmds.map(c => `
+        <div class="cmd-item" data-cmd="${c.cmd.toLowerCase()}">
+          <span class="cmd-name">${c.cmd}</span>
+          <span class="cmd-desc">${c.desc}</span>
+        </div>
+      `).join("")}
+    </div>
+  `;
+  return card;
+}
 
-            document.body.appendChild(h)
+function toggleCard(header) {
+  header.parentElement.classList.toggle("collapsed");
+}
 
-            gsap.to(h,{
-                y:-window.innerHeight-100,
-                opacity:0,
-                duration:4,
-                onComplete:()=>h.remove()
-            })
+/* ═══════════════════════════════════════
+   SEARCH
+   ═══════════════════════════════════════ */
+document.getElementById("search").addEventListener("input", function() {
+  const q = this.value.toLowerCase().trim();
+  document.querySelectorAll(".cat-card").forEach(card => {
+    let anyVisible = false;
+    card.querySelectorAll(".cmd-item").forEach(item => {
+      const text = item.dataset.cmd + " " + item.querySelector(".cmd-desc").textContent.toLowerCase();
+      const match = !q || text.includes(q);
+      item.classList.toggle("no-match", !match);
+      if (match) anyVisible = true;
+    });
+    card.classList.toggle("all-hidden", !anyVisible);
+    if (q && anyVisible) card.classList.remove("collapsed");
+  });
+});
 
-        },700)
+/* ═══════════════════════════════════════
+   ADMIN GATE
+   ═══════════════════════════════════════ */
+function verifyAdmin() {
+  const input = document.getElementById("discord-id-input").value.trim();
+  const err = document.getElementById("gate-error");
+  if (ADMIN_IDS.includes(input)) {
+    document.getElementById("admin-gate").style.display = "none";
+    const content = document.getElementById("admin-content");
+    content.classList.add("unlocked");
+    // Animate in admin cards
+    setTimeout(() => {
+      document.querySelectorAll("#admin-grid .cat-card, #mgmt-grid .cat-card").forEach((card, i) => {
+        setTimeout(() => card.classList.add("visible"), i * 80);
+      });
+    }, 200);
+    // Save to session
+    sessionStorage.setItem("mp_admin_verified", input);
+  } else {
+    err.style.display = "block";
+    document.getElementById("discord-id-input").style.borderColor = "#ff4444";
+    setTimeout(() => {
+      err.style.display = "none";
+      document.getElementById("discord-id-input").style.borderColor = "";
+    }, 3000);
+  }
+}
 
-    }
+// Allow Enter key
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("discord-id-input").addEventListener("keydown", e => {
+    if (e.key === "Enter") verifyAdmin();
+  });
 
+  // Auto-verify if remembered in session
+  const saved = sessionStorage.getItem("mp_admin_verified");
+  if (saved && ADMIN_IDS.includes(saved)) {
+    document.getElementById("discord-id-input").value = saved;
+    verifyAdmin();
+  }
+});
+
+/* ═══════════════════════════════════════
+   COUNTER ANIMATION
+   ═══════════════════════════════════════ */
+function animateCounter(el, target) {
+  let current = 0;
+  const step = Math.ceil(target / 60);
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = current;
+    if (current >= target) clearInterval(timer);
+  }, 16);
+}
+
+/* ═══════════════════════════════════════
+   PARTICLES
+   ═══════════════════════════════════════ */
+(function spawnParticles() {
+  const container = document.getElementById("particles");
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement("div");
+    p.className = "particle";
+    const size = Math.random() * 4 + 2;
+    p.style.cssText = `
+      width: ${size}px; height: ${size}px;
+      left: ${Math.random() * 100}%;
+      animation-duration: ${Math.random() * 20 + 15}s;
+      animation-delay: ${Math.random() * 20}s;
+      opacity: 0;
+    `;
+    container.appendChild(p);
+  }
+})();
+
+/* ═══════════════════════════════════════
+   INIT
+   ═══════════════════════════════════════ */
+renderCategories();
 </script>
-
 </body>
 </html>
